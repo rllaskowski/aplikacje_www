@@ -18,9 +18,23 @@ th {
 
 main {
     font-size: 20px;
-    margin-left: auto;
-    width: 70%;
-    margin-right: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding-left: 0px;
+    
+}
+
+nav ul li {
+    font-size: 25px;
+    padding: 10px 30px;
+    font-family: monospace;
+    
+}
+
+nav ul li a {
+    text-decoration: none;
 }
 
 header h1 {
@@ -30,7 +44,7 @@ header h1 {
 header {
     margin-top :0px;
     margin-bottom: 30px;
-    background-color: rgb(202, 198, 198);
+    background-color: lightblue;
     padding: 30px;
 }
 
@@ -49,7 +63,7 @@ a {
 }
 
 .zdjecie-miasta {
-    width: 40%;
+    width: 500px
 }
 
 #logo {
@@ -61,6 +75,9 @@ a {
 
 #lista-lotow {
    position: relative;
+   width: 70%;
+   margin-left: auto;
+   margin-right:auto;
 }
 
 #opis #pierwszy {
@@ -79,6 +96,7 @@ a {
     background-color: lightgoldenrodyellow;
 }
 
+
 #swietny-lot {
     position: absolute;
     left: 560px;
@@ -92,36 +110,60 @@ a {
 }
 
 #lista-pasazerow {
-    
+    list-style: none;
+    padding-left: 0px;
+    list-style-position: inside;
 }
 
+#lista-pasazerow li {
+    padding: 10px;
+    margin-left: 0px;
+}
+
+#lista-pasazerow li:nth-child(odd) {
+    background-color: indianred;
+}
+
+#lista-pasazerow li:nth-child(even) {
+    background-color: lightblue;
+}
+
+
 #opis-lotu {
-    margin-top: 50px;
+    margin-top: 70px;
 }
 
 #opis-samolotu {
     margin-top: 50px;
-    text-align: left;
-}
-
-#opis-samolotu #opis {
-    order: 1;
-    flex-basis: 50%;
-    flex-grow: 1;
-}
-
-#opis-samolotu #zdjecia {
-    order: 2;
-    flex-basis: 50%;
-    flex-grow:1;
 }
 
 #zdjecie-samolotu {
     display:block;
-    width: 100%;
-    order: 2;
-    flex-grow: 1;
+    width: 500px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .kontener {
     display: flex;
+}
+#opoznione {
+    padding: 20px;
+}
+
+#opis-miast {
+    margin-top: 50px;
+}
+
+#opoznione-loty {
+    list-style: none;
+    padding-left: 0px;
+}
+
+#opoznione-loty li {
+    padding: 10px 20px;
+}
+
+#rezerwacja {
+    margin-top: 50px;
 }
