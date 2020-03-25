@@ -118,6 +118,7 @@ a {
 #lista-pasazerow li {
     padding: 10px;
     margin-left: 0px;
+    position: relative;
 }
 
 #lista-pasazerow li:nth-child(odd) {
@@ -128,6 +129,25 @@ a {
     background-color: lightblue;
 }
 
+
+.miejsce-pasazera {
+    display:none;
+    background-color: white;
+    padding: 10px 20px;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 20%;
+    position: absolute;
+    top: -20px;
+    left: 30
+    
+    0px;
+    z-index: 1;
+}
+
+#lista-pasazerow li:hover > .miejsce-pasazera {
+    display: block;
+}
 
 #opis-lotu {
     margin-top: 70px;
@@ -166,12 +186,13 @@ a {
     margin-top: 50px;
 }
 
-@media screen and (max-width: 800px) {
-   
+.kontener {
+    display: grid;
 }
 
-@media screen and (min-width: 800px) {
-    .kontener {
-        display: flex;
+
+@media only screen and (max-width: 600px) {
+    #opis-miast {
+        display: none;
     }
 }
