@@ -56,10 +56,10 @@
                 <section id="city-desc">
                     <p>Przewidywana pogoda w mieście <b>Warszawa</b>: słonecznie</p>
                     <p>Przewidywana pogoda w mieście <b>Wrocław</b>: pochmurnie, bez opadów</p>
-                    <div id="zdjecia">
-                        <img class="zdjecie-miasta" src="./images/warszawa.jpg" alt="Warszawa"/>
-                        <img class="zdjecie-miasta" src="./images/wroclaw.jpg" alt="Wroclaw"/>
-                    </div>
+
+                    <img class="city-image" src="./images/warszawa.jpg" alt="Warszawa"/>
+                    <img class="city-image" src="./images/wroclaw.jpg" alt="Wroclaw"/>
+                
                 </section>
             </main>
 
@@ -69,38 +69,44 @@
                     
                     <ul id="delayed-flights-list">
                         <li class="short-delay"><i>Warszawa - Wrocław</i> 14:00 <br/><b>20min</b></li>
-                        <li class="short-delay">Kijów - Berlin 15:30 <br/> <b>40min</b></li>
-                        <li class="short-delay">Warszawa - Paryż 17:25 <br/> <b>30min</b></li>
-                        <li class="long-delay"> Amsterdam - Barcelona <br/><b>3h 10min</b></li>
+                        <li class="short-delay"><i>Kijów - Berlin 15:30</i><br/> <b>40min</b></li>
+                        <li class="short-delay"><i>Warszawa - Paryż 17:25</i> <br/> <b>30min</b></li>
+                        <li class="long-delay"><i>Amsterdam - Barcelona</i> <br/><b>3h 10min</b></li>
                     </ul>
                 </section>
 
                 <section id="reservation">
-                    <form id="reservation-form">
-                        <label for="skad">Wylot: </label>
-                        <select id="skad" name="skad">
+                    <h3 id="reservation-header">Zarezerwuj lot</h3>
+
+                    <form id="reservation-form" action="./flight-with-popup.html">
+                        <div>
+                            <label for="departure">Wylot</label>
+                            <br/>
+                            <select id="departure" name="skad">
+                                <option>Warszawa</option>
+                                <option>Wrocław</option>
+                                <option>Paryż</option>
+                                <option>Berlin</option>
+                            </select>
+                        </div>
+                        <div>
+                        <label for="arrival">Przylot</label>
+                        <br/>
+                        <select id="arrival" name="cel">
                             <option>Warszawa</option>
                             <option>Wrocław</option>
                             <option>Paryż</option>
                             <option>Berlin</option>
                         </select>
-                        <label for="cel">Przylot: </label>
-                        <select id="cel" name="cel">
-                            <option>Warszawa</option>
-                            <option>Wrocław</option>
-                            <option>Paryż</option>
-                            <option>Berlin</option>
-                        </select>
-                        <div>
-                            <label for="imie">Imię:</label>
-                            <input type="text" id="imie"/>
                         </div>
                         <div>
-                            <label for="nazwisko">Nazwisko:</label>
-                            <input type="text" id="nazwisko"/>
+                            <input type="text" id="input-name" placeholder="Imię"/>
                         </div>
-                        <input type="reset" value="Zresetuj">
-                        <input type="submit" value="Rezerwuj!">
+                        <div>
+                            <input type="text" id="input-name" placeholder="Nazwisko"/>
+                        </div>
+                        <button type="reset">Zresetuj</button>
+                        <button type="submit">Rezerwuj</button>
                     </form>
                 </section>
             </aside>

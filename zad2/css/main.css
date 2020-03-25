@@ -161,7 +161,7 @@ a {
     color: inherit;
 }
 
-.zdjecie-miasta {
+.city-image {
     width: 100%
 }
 
@@ -279,6 +279,46 @@ a {
     background-color: orangered;
 }
 
-#rezerwacja {
-    margin-top: 50px;
+#reservation {
+    margin-top: 30px;
+}
+
+#reservation-form select {
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 5%;
+    width: 100%;
+}
+
+#reservation-form input[type="text"]{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5%;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#reservation-form button {
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+#reservation-popup {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    top: 0px;
+    left: 5%;
+    height: 100%;
+    opacity: 70%;
+}
+
+#reservation-popup-text {
+    margin-top: 30%;
+    font-size: 40px;
 }
