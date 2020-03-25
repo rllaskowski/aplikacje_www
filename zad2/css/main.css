@@ -1,7 +1,118 @@
+
+
+#main-container {
+    display: grid;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    margin-top :0px;
+    margin-bottom: 30px;
+    background-color: aliceblue;
+    padding: 30px;
+
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: end;
+}
+
+main {
+    font-size: 20px;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 30px;
+    color: grey;
+    width: 100%;
+    background-color: aliceblue;
+
+    grid-row: end;
+    grid-column-start: 1;
+    grid-column-end: end;
+}
+
+@media screen and (max-width: 500px) {
+    #main-container {
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-columns: 100%;
+    }
+
+    #city-desc {
+        display: none;
+    }
+
+    nav {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    main {
+        grid-row: 3;
+        grid-column: 1;
+    }
+
+    aside {
+        grid-row: 4;
+        grid-column: 1;;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 999px) {
+    #main-container {
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: 50% 50%;
+        grid-gap: 15px 15px;
+    }
+
+    nav {
+        grid-row: 2;
+        grid-column-start: 1;
+        grid-column-end: end;
+    }
+
+    main {
+        grid-row: 3;
+        grid-column: 1;
+    }
+
+    aside {
+        grid-row: 3;
+        grid-column: 2;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    #main-container {
+        grid-gap: 15px 15px;
+        grid-template-columns: 200px 3fr 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    nav {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    main {
+        grid-row: 2;
+        grid-column: 2    
+    }
+
+    aside {
+        grid-row: 2;
+        grid-column: 3;
+    }
+}
+
 body {
     margin:0px;
+    padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    
 }
 
 
@@ -16,46 +127,34 @@ th {
     font-weight: lighter;
 }
 
-main {
-    font-size: 20px;
-}
 
-nav ul {
+#navigation-list {
     list-style: none;
     padding-left: 0px;
-    
 }
 
-nav ul li {
-    font-size: 25px;
+#navigation-list li {
+    font-size: 15px;
     padding: 10px 30px;
     font-family: monospace;
-    
+    border-bottom: 1px solid black;
 }
 
-nav ul li a {
+#navigation-list li a {
     text-decoration: none;
 }
 
-header h1 {
+
+#header-text {
     margin-top: 0px;
 }
 
-header {
-    margin-top :0px;
-    margin-bottom: 30px;
-    background-color: lightblue;
-    padding: 30px;
-}
 
-footer {
-    margin-top: 30px;
-    font-size: 30px;
-    color: green;
-    width: 50%;
+#header-logo {
+    display: block;
+    width: 60px;
     margin-left: auto;
-    margin-right: auto;
-    background-color: aliceblue;
+    margin-right:auto;
 }
 
 a {
@@ -63,24 +162,18 @@ a {
 }
 
 .zdjecie-miasta {
-    width: 500px
+    width: 100%
 }
 
-#logo {
-    display: block;
-    width: 60px;
-    margin-left: auto;
-    margin-right:auto;
-}
 
-#lista-lotow {
+#flights {
    position: relative;
    width: 70%;
    margin-left: auto;
    margin-right:auto;
 }
 
-#opis #pierwszy {
+#greetings-text {
     width: 75%;
     padding: 10px;
     margin-left: auto;
@@ -88,7 +181,7 @@ a {
     background-color: lavender;
 }
 
-#opis #drugi {
+#offer-text {
     width: 75%;
     padding: 10px;
     margin-left: auto;
@@ -97,7 +190,7 @@ a {
 }
 
 
-#swietny-lot {
+#best-flight {
     position: absolute;
     left: 560px;
     top: 60px;
@@ -109,28 +202,32 @@ a {
     font-weight: bolder;
 }
 
-#lista-pasazerow {
+#passengers-list {
     list-style: none;
     padding-left: 0px;
     list-style-position: inside;
 }
 
-#lista-pasazerow li {
+#passengers-list li {
     padding: 10px;
     margin-left: 0px;
     position: relative;
 }
 
-#lista-pasazerow li:nth-child(odd) {
+#passengers-list li:nth-child(odd) {
     background-color: indianred;
 }
 
-#lista-pasazerow li:nth-child(even) {
+#passengers-list li:nth-child(even) {
     background-color: lightblue;
 }
 
+#passengers-list li:hover > .passenger-popup {
+    display: block;
+}
 
-.miejsce-pasazera {
+
+.passenger-popup {
     display:none;
     background-color: white;
     padding: 10px 20px;
@@ -139,60 +236,49 @@ a {
     border-radius: 20%;
     position: absolute;
     top: -20px;
-    left: 30
-    
-    0px;
+    left: 60%;
     z-index: 1;
 }
 
-#lista-pasazerow li:hover > .miejsce-pasazera {
-    display: block;
-}
 
-#opis-lotu {
+#flight-desc {
     margin-top: 70px;
 }
 
-#opis-samolotu {
+#plane-desc {
     margin-top: 50px;
 }
 
 #zdjecie-samolotu {
     display:block;
-    width: 500px;
+    width: 100%;
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
 }
 
-#opoznione {
-    padding: 20px;
-}
-
-#opis-miast {
+#city-desc {
     margin-top: 50px;
 }
 
-#opoznione-loty {
+#delayed-flights-list {
     list-style: none;
     padding-left: 0px;
 }
 
-#opoznione-loty li {
+#delayed-flights-list li {
     padding: 10px 20px;
+    border-bottom: 1px solid black;
+}
+
+.short-delay {
+    background-color: orange;
+}
+
+.long-delay {
+    background-color: orangered;
 }
 
 #rezerwacja {
     margin-top: 50px;
-}
-
-.kontener {
-    display: grid;
-}
-
-
-@media only screen and (max-width: 600px) {
-    #opis-miast {
-        display: none;
-    }
 }

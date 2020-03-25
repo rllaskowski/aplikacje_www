@@ -7,105 +7,110 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">.
     </head>
-    <body class="kontener">
-        <header>
-            <h1>LotPol</h1>
-            <img src="images/logo.png" id="logo"/>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="">Strona główna</a></li>
-                <li><a href="">Zaloguj się</a></li>
-                <li><a href="">Nasi partnerzy</a></li>
-                <li><a href="">O nas</a></li>
-                <li><a href="">Wyszukiwarka</li>
-                <li><a href="">Cennik</a></li>
-                <li><a href="">Ubezpieczenia</a></li>
-                <li><a href="">Promocje</a></li>
-            </ul>
-        </nav>
-        <main>
-            <section id="opis-lotu">
-                <p>
-                    Trasa lotu:
-                    <a href="https://pl.wikipedia.org/wiki/Warszawa">Warszawa</a> - <a href="https://pl.wikipedia.org/wiki/Wrocław">Wrocław</a>
-                </p>
-                <p>Oczekiwany czas lotu: 50min</p>
-            </section>
-
-            <section id="opis-samolotu" >
-                <p>Typ samolotu: Boeing 747 (liczba miejsc: 380)</p>
-                <img src="images/boeing.jpg" alt="Boeing-747" id="zdjecie-samolotu"/>
-                
-                <h4 id="pasazerowie">Lista pasażerów:</h4>
-
-                <ol id="lista-pasazerow">
-                    <li>Zdzisław Bieruński<div class="miejsce-pasazera">miejsce: 2</div></li>
-                    <li>Robert Laskowski<div class="miejsce-pasazera">miejsce: 3</div></li>
-                    <li>Andrzej Sieńkowski<div class="miejsce-pasazera">miejsce: 21</div></li>
-                    <li>Penelope Cruz<div class="miejsce-pasazera">miejsce: 33</div></li>
-                    <li>Barack Obama<div class="miejsce-pasazera">miejsce: 41</div></li>
-                    <li>Lech Wałęsa<div class="miejsce-pasazera">miejsce: 8</div></li>
-                    <li>Jan Kowalski<div class="miejsce-pasazera">miejsce: 15</div></li>
-                </ol>
-
-                
-            </section>
-        
-            <section id="opis-miast">
-                <p>Przewidywana pogoda w mieście Warszawa: słonecznie</p>
-                <p>Przewidywana pogoda w mieście Wrocław: pochmurnie, bez opadów</p>
-                <div id="zdjecia">
-                    <img class="zdjecie-miasta" src="./images/warszawa.jpg" alt="Warszawa"/>
-                    <img class="zdjecie-miasta" src="./images/wroclaw.jpg" alt="Wroclaw"/>
-                </div>
-            </section>
-        
-        </main>
-        <aside id="prawa">
-            <h3>Opóźnione loty</h3>
+    <body>
+        <div id="main-container">
+            <header>
+                <h1 id="header-text">LotPol</h1>
+                <img src="images/logo.png" id="header-logo"/>
+            </header>
             
-            <ul id="opoznione-loty">
-                <li>Warszawa-Wrocław 14:00 - 20min</li>
-                <li>Kijów-Berlin 15:30 - 1h 20min</li>
-                <li>Warszawa-Paryż 17:25 - 40min</li>
-                <li> 12.03 - 20min</li>
-            </ul>
+            <nav id="navigation">
+                <ul id="navigation-list">
+                    <li><a href="./index.html">Strona główna</a></li>
+                    <li><a href="">Zaloguj się</a></li>
+                    <li><a href="">Nasi partnerzy</a></li>
+                    <li><a href="">O nas</a></li>
+                    <li><a href="">Wyszukiwarka</li>
+                    <li><a href="">Cennik</a></li>
+                    <li><a href="">Ubezpieczenia</a></li>
+                    <li><a href="">Promocje</a></li>
+                </ul>
+            </nav>
 
+            <main>
+                <section id="fight-desc">
+                    <p>
+                        Trasa lotu:
+                        <a href="https://pl.wikipedia.org/wiki/Warszawa">Warszawa</a> - <a href="https://pl.wikipedia.org/wiki/Wrocław">Wrocław</a>
+                    </p>
+                    <p>Oczekiwany czas lotu: 50min</p>
+                </section>
 
-            <form id="rezerwacja">
-                <label for="skad">Wylot: </label>
-                <select id="skad" name="skad">
-                    <option>Warszawa</option>
-                    <option>Wrocław</option>
-                    <option>Paryż</option>
-                    <option>Berlin</option>
-                </select>
-                <label for="cel">Przylot: </label>
-                <select id="cel" name="cel">
-                    <option>Warszawa</option>
-                    <option>Wrocław</option>
-                    <option>Paryż</option>
-                    <option>Berlin</option>
-                </select>
-                <div>
-                    <label for="imie">Imię:</label>
-                    <input type="text" id="imie"/>
-                </div>
-                <div>
-                    <label for="nazwisko">Nazwisko:</label>
-                    <input type="text" id="nazwisko"/>
-                </div>
-                <input type="reset" value="Zresetuj">
-                <input type="submit" value="Rezerwuj!">
-            </form>
-        </aside>
-        <footer>
-            <p>
-            Robert Laskowski - 2020
-            </p>
-        </footer>
+                <section id="plane-desc" >
+                    <p>Typ samolotu: Boeing 747 (liczba miejsc: 380)</p>
+                    <img src="images/boeing.jpg" alt="Boeing-747" id="zdjecie-samolotu"/>
+                    
+                    <h4 id="passengers-text">Lista pasażerów:</h4>
+
+                    <ol id="passengers-list">
+                        <li>Zdzisław Bieruński<div class="passenger-popup">miejsce: 2</div></li>
+                        <li>Robert Laskowski<div class="passenger-popup">miejsce: 3</div></li>
+                        <li>Andrzej Sieńkowski<div class="passenger-popup">miejsce: 21</div></li>
+                        <li>Penelope Cruz<div class="passenger-popup">miejsce: 33</div></li>
+                        <li>Barack Obama<div class="passenger-popup">miejsce: 41</div></li>
+                        <li>Lech Wałęsa<div class="passenger-popup">miejsce: 8</div></li>
+                        <li>Jan Kowalski<div class="passenger-popup">miejsce: 15</div></li>
+                    </ol>
+                </section>
+            
+                <section id="city-desc">
+                    <p>Przewidywana pogoda w mieście <b>Warszawa</b>: słonecznie</p>
+                    <p>Przewidywana pogoda w mieście <b>Wrocław</b>: pochmurnie, bez opadów</p>
+                    <div id="zdjecia">
+                        <img class="zdjecie-miasta" src="./images/warszawa.jpg" alt="Warszawa"/>
+                        <img class="zdjecie-miasta" src="./images/wroclaw.jpg" alt="Wroclaw"/>
+                    </div>
+                </section>
+            </main>
+
+            <aside id="prawa">
+                <section id="delayed-flights">
+                    <h3 id="delayed-flights-header">Opóźnione loty</h3>
+                    
+                    <ul id="delayed-flights-list">
+                        <li class="short-delay"><i>Warszawa - Wrocław</i> 14:00 <br/><b>20min</b></li>
+                        <li class="short-delay">Kijów - Berlin 15:30 <br/> <b>40min</b></li>
+                        <li class="short-delay">Warszawa - Paryż 17:25 <br/> <b>30min</b></li>
+                        <li class="long-delay"> Amsterdam - Barcelona <br/><b>3h 10min</b></li>
+                    </ul>
+                </section>
+
+                <section id="reservation">
+                    <form id="reservation-form">
+                        <label for="skad">Wylot: </label>
+                        <select id="skad" name="skad">
+                            <option>Warszawa</option>
+                            <option>Wrocław</option>
+                            <option>Paryż</option>
+                            <option>Berlin</option>
+                        </select>
+                        <label for="cel">Przylot: </label>
+                        <select id="cel" name="cel">
+                            <option>Warszawa</option>
+                            <option>Wrocław</option>
+                            <option>Paryż</option>
+                            <option>Berlin</option>
+                        </select>
+                        <div>
+                            <label for="imie">Imię:</label>
+                            <input type="text" id="imie"/>
+                        </div>
+                        <div>
+                            <label for="nazwisko">Nazwisko:</label>
+                            <input type="text" id="nazwisko"/>
+                        </div>
+                        <input type="reset" value="Zresetuj">
+                        <input type="submit" value="Rezerwuj!">
+                    </form>
+                </section>
+            </aside>
+
+            <footer>
+                <p>
+                Robert Laskowski - 2020
+                </p>
+            </footer>
+        </div>
     </body>
 
 </html>
