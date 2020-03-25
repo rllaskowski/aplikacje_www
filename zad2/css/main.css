@@ -144,9 +144,7 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
-.kontener {
-    display: flex;
-}
+
 #opoznione {
     padding: 20px;
 }
@@ -166,4 +164,14 @@ a {
 
 #rezerwacja {
     margin-top: 50px;
+}
+
+@media screen and (max-width: 800px) {
+   
+}
+
+@media screen and (min-width: 800px) {
+    .kontener {
+        display: flex;
+    }
 }
