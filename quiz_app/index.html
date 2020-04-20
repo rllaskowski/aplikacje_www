@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Quizowanie</title>
+
+        <link rel="stylesheet" href="css/layout.css"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="wclassth=device-wclassth,initial-scale=1.0">
+        
+    </head>
+    <body>
+        <header>
+            <h3>QUIZOWANIE</h3>
+        </header>
+        <main class="main-container">
+            <div id="views">
+                
+                <div id="main-view" class="invisible-view">
+                    <div id="scores-comp">
+                        <p>Wyniki</p>
+                        <ul id="scores-list-comp">
+                            <li>Maciek dyndała</li>
+                            <li>Agnieszka Agnieszka</li>
+                            <li>Maciek dyndała</li>
+                        </ul>
+                    </div>
+                
+                    <button id="start-btn">START</button>
+                </div>
+
+
+                <div id="quiz-view" class="invisible-view">
+                    <p id="game-descr"></p>
+                        <div class="question-sec">
+                            <p id="q-content"></p>
+                            <input type="number"id="ans-input"/>
+                        </div>
+                        <div id="timer"></div>
+                        <div id="nav-sec">
+                            <button id="prev-btn">POPRZEDNIE</button>
+                            <button id="next-btn">NASTĘPNE</button>
+                            <button id="quit-btn">WYJDZ Z QUIZU</button>
+                        </div>
+                </div>     
+
+            </div>
+        </main>
+
+        <script src="scripts/build/bundle.js"></script>   
+    </body>
+</html>
+
