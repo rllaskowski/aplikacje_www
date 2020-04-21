@@ -80,7 +80,8 @@ li {
 }
 
 #timer {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     box-sizing: border-box;
     width: 100px;
     height: 100px;
