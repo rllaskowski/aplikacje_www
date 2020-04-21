@@ -34,7 +34,7 @@ let answeredCount: number;
 
 // View renderers
 const renderTimer = () => {
-    timer.innerText = `${timeElapsed}s`;
+    timer.innerText = `${timeElapsed} sek`;
 }
     
 const renderQuestion = () => {
