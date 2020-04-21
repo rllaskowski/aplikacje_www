@@ -40,9 +40,13 @@ header {
     transition: opacity 2000ms ease-in-out;
 }
 
+ul {
+    padding: 0px;
+}
+
 li {
     list-style: none;
-    margin-left: 0px;
+    list-style-position: outside;
 }
 
 #score-list {
