@@ -40,7 +40,7 @@ const renderScoreList = () => {
         bestResults.forEach(result => {
             let scoreLi = document.createElement("li") as HTMLElement;
 
-            scoreLi.innerHTML = `${result.score} sek`;
+            scoreLi.innerHTML = `${result.score} sek.`;
 
             scoreList.appendChild(scoreLi);
         });

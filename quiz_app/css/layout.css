@@ -93,6 +93,12 @@ li {
     margin-right: auto;
     background-color: #63BA38;
     color: white;
+    font-weight: 600;
+}
+
+#answer-list {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #answer-list li {

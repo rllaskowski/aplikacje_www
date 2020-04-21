@@ -36,6 +36,8 @@ const renderAnswers = () => {
 
         if (result.answers[id].content === questionDict[id].correctAnswer) {
             answerLi.classList.add("correct");
+        } else {
+            answerLi.innerText += ` (${questionDict[id].penalty} sek. kary)`;
         }
 
         answerList.appendChild(answerLi);
@@ -43,7 +45,7 @@ const renderAnswers = () => {
 }
 
 const renderScore = () => {
-    scoreP.innerHTML = `Twój wynik: ${result.score}`;
+    scoreP.innerHTML = `Twój wynik: <b>${result.score}</b> sek.`;
 }
 
 
