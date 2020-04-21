@@ -139,8 +139,7 @@ const showQuiz = (_quiz: IQuiz) => {
     answered = {};
     question = quiz.questionList[0];
     answeredCount = 0;
-
-   // stopBtn.disabled = true;
+    
     prevBtn.disabled = true;
     nextBtn.disabled = quiz.questionList.length == 1? true : false;
 
