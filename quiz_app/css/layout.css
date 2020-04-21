@@ -91,9 +91,18 @@ li {
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
+    background-color: #63BA38;
+    color: white;
 }
 
+#nav-sec {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.disabled {
+    background-color: #DC3D3B !important;
+}
 
 #quiz-list {
     padding: 20px;

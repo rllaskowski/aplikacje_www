@@ -11,7 +11,6 @@ let quizView = document.getElementById("quiz-view");
 let nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
 let prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
 let cancelBtn = document.getElementById("cancel-btn") as HTMLButtonElement;
-let stopBtn = document.getElementById("stop-btn") as HTMLButtonElement;
 
 let timer = document.getElementById("timer");
 
@@ -89,10 +88,8 @@ prevBtn.onclick = () => {
     }
 }
 
-stopBtn.onclick = () => {
+timer.onclick = () => {
     if (answeredCount === quiz.questionList.length) {
-        // Check in case someone was messing with button disabled attr
-    
         clearInterval(timerHandler);
         hideView(quizView).then(() => showResult(result, quiz));
     }   
@@ -127,9 +124,9 @@ ansInput.oninput = () => {
     }
 
     if (answeredCount === quiz.questionList.length) {
-        stopBtn.disabled = false;
+        timer.classList.remove("disabled");
     } else {
-        stopBtn.disabled = true;
+        timer.classList.add("disabled");
     }
 }
 
@@ -143,9 +140,11 @@ const showQuiz = (_quiz: IQuiz) => {
     question = quiz.questionList[0];
     answeredCount = 0;
 
-    stopBtn.disabled = true;
+   // stopBtn.disabled = true;
     prevBtn.disabled = true;
     nextBtn.disabled = quiz.questionList.length == 1? true : false;
+
+    timer.classList.add("disabled");
 
     result = {
         score: 0,
