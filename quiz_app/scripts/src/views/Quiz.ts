@@ -16,6 +16,8 @@ let timer = document.getElementById("timer");
 
 let quizDescription = document.getElementById("quiz-description");
 
+let progess = document.getElementById("progress");
+
 let qContent = document.getElementById("q-content");
 let ansInput = document.getElementById("ans-input") as HTMLInputElement;
 
