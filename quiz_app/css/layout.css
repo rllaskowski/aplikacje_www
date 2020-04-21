@@ -33,11 +33,11 @@ header {
 }
 
 #main-view {
-    transition: opacity 2000ms ease-in-out;
+    transition: opacity 1000ms ease-in-out;
 }
 
 #quiz-view {
-    transition: opacity 2000ms ease-in-out;
+    transition: opacity 1000ms ease-in-out;
 }
 
 ul {
@@ -96,10 +96,6 @@ li {
     flex-wrap: wrap;
 }
 
-button {
-    box-shadow: 0 1px 2px #5e5d5b;
-}
-
 #quiz-list button {
     padding: 40px;
     text-align: center;
@@ -151,11 +147,17 @@ button:enabled:hover {
 }
 
 button {
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 1px 2px #5e5d5b;
     padding: 12px 40px;
     font-size: 18px;
-    border-radius: 10px;
     color: white;
     border: 1px solid transparent;
+}
+
+button:hover {
+    transition: 200ms ease-in;
 }
 
 button:focus {
