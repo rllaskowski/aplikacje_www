@@ -37,7 +37,12 @@ const renderAnswers = () => {
         if (result.answers[id].content === questionDict[id].correctAnswer) {
             answerLi.classList.add("correct");
         } else {
-            answerLi.innerText += ` (${questionDict[id].penalty} sek. kary)`;
+            let penalty = document.createElement("div");
+            penalty.classList.add("penalty");
+            penalty.innerText = `+${questionDict[id].penalty}`;
+            answerLi.appendChild(penalty)
+            
+
         }
 
         answerList.appendChild(answerLi);

@@ -31,12 +31,16 @@ header {
     min-height: 100vh;
 }
 
+#result-view {
+    transition: opacity 3000ms ease-in-out;
+}
+
 #main-view {
-    transition: opacity 1000ms ease-in-out;
+    transition: opacity 800ms ease-in-out;
 }
 
 #quiz-view {
-    transition: opacity 1000ms ease-in-out;
+    transition: opacity 800ms ease-in-out;
 }
 
 ul {
@@ -47,6 +51,7 @@ li {
     list-style: none;
     list-style-position: outside;
 }
+
 
 #scores-sec {
     width: 90%;
@@ -96,12 +101,27 @@ li {
     font-weight: 600;
 }
 
+
+.penalty {
+    background-color: white;
+    color: #DC3D3B;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px #5e5d5b;
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
+}
+
 #answer-list {
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
 #answer-list li {
+    position: relative;
     background-color: #DC3D3B;
     margin-bottom: 10px;
     padding: 10px;

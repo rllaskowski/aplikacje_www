@@ -101,9 +101,7 @@ cancelBtn.onclick = () => {
 }
 
 ansInput.onkeydown = (evt) => {
-    if (evt.keyCode == 13) {
-        // Enter clicked
-        
+    if (evt.keyCode == 13 && ansInput.value !== "") {
         nextBtn.click();
     }
 }
@@ -139,7 +137,7 @@ const showQuiz = (_quiz: IQuiz) => {
     answered = {};
     question = quiz.questionList[0];
     answeredCount = 0;
-    
+
     prevBtn.disabled = true;
     nextBtn.disabled = quiz.questionList.length == 1? true : false;
 
@@ -163,7 +161,9 @@ const showQuiz = (_quiz: IQuiz) => {
 
     renderQuestion();
 
-    return showView(quizView);
+    return showView(quizView).then(() => {
+        ansInput.focus();
+    });
 }
 
 export {
