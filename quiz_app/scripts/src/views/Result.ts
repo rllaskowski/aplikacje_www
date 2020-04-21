@@ -26,6 +26,8 @@ let questionDict: {[id: number]: IQuestion}
 // View renderers
 
 const renderAnswers = () => {
+    answerList.innerHTML = "";
+
     Object.keys(result.answers).forEach((questionId) => {
         let answerLi = document.createElement("li") as HTMLElement;
         const id = parseInt(questionId);

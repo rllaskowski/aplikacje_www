@@ -2,26 +2,33 @@ body {
     margin-top: 0px;
     height: 100%;
     text-align: center;
-    color: white;
+    padding: 0px;
+   
     font-size: 30px;
     font-family: 'Noto Sans JP', sans-serif;
     background-color:#F2F2F2;
 }
 
-.main-container {
-    display: grid;
-    grid-template-columns: 1fr 800px 1fr;
+
+header {
+    margin-top: 0px;
+  
 }
 
 #header {
+    margin-top: 0px;
+    background-color:  #834FBA;;
     font-family: 'Bangers', cursive;
     font-size: 70px;
-    color: #DC3D3B;
+    color: white;  
+    padding: 20px;
+
 }
 
 #views {
-    grid-column: 2;
-   
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
     min-height: 100vh;
 }
 
@@ -43,6 +50,7 @@ li {
     border-bottom: 30px solid #DC3D3B;
     border-left: 30px solid #1665C8;
     
+  
     width: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -62,16 +70,59 @@ li {
     width: 79%;
     padding: 20px;
     font-size: 20px;
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+    border: 1px solid grey;
     text-align: center;
 }
 
 #timer {
-   
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 
-button {
+#quiz-list li{
+    background-color: #F4CA39;
     padding: 20px;
-    font-size: 20px;
     border-radius: 20px;
+}
+
+#quiz-list li :nth-child(even){
+    background-color: #F4CA39;
+    padding: 20px;
+}
+
+#quiz-list li:hover {
+    background-color: #E2B728;
+}
+
+#quiz-description {
+    margin-bottom: 40px;
+}
+
+button {
+    padding: 20px 40px;
+    font-size: 30px;
+    border-radius: 18px;
+    border: 0px;
+    color: white;
+    background-color: #F4CA39;
+}
+button:disabled {
+    background-color: grey;
+}
+
+
+button:hover {
+    background-color: #E2B728;
+}
+
+button:disabled:hover {
+    background-color: grey;
+}
+
+#start-btn {
+    width: 80%;
+
 }

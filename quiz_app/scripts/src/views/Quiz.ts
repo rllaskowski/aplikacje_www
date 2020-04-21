@@ -76,8 +76,7 @@ prevBtn.onclick = () => {
 stopBtn.onclick = () => {
     if (answeredCount === quiz.questionList.length) {
         // Check in case someone was messing with button disabled attr
-        
-
+    
         clearInterval(timerHandler);
         hideView(quizView).then(() => showResult(result, quiz));
     }   
@@ -88,6 +87,13 @@ cancelBtn.onclick = () => {
     hideView(quizView).then(() => showMain());
 }
 
+ansInput.onkeydown = (evt) => {
+    if (evt.keyCode == 13) {
+        // Enter clicked
+        
+        nextBtn.click();
+    }
+}
 
 ansInput.oninput = () => {
     if (ansInput.value === "") {
