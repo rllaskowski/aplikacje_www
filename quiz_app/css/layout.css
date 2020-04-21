@@ -28,7 +28,7 @@ header {
 #views {
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    max-width: 800px;
     min-height: 100vh;
 }
 
