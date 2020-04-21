@@ -34,15 +34,17 @@ const renderScoreList = () => {
         return a.score < b.score? -1 : 1;
     });
 
-    let bestResults = resultList.slice(0, 5);
+    if (resultList.length > 0) {
+        let bestResults = resultList.slice(0, 5);
 
-    bestResults.forEach(result => {
-        let scoreLi = document.createElement("li") as HTMLElement;
+        bestResults.forEach(result => {
+            let scoreLi = document.createElement("li") as HTMLElement;
 
-        scoreLi.innerHTML = `${result.score} sek`;
+            scoreLi.innerHTML = `${result.score} sek`;
 
-        scoreList.appendChild(scoreLi);
-    });
+            scoreList.appendChild(scoreLi);
+        });
+    }
 }
 
 
