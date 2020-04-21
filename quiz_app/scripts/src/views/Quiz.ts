@@ -8,9 +8,9 @@ import { showResult } from './Result';
 // Quiz view components
 let quizView = document.getElementById("quiz-view");
 
-let nextBtn = document.getElementById("next-btn");
-let prevBtn = document.getElementById("prev-btn");
-let cancelBtn = document.getElementById("cancel-btn");
+let nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+let prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
+let cancelBtn = document.getElementById("cancel-btn") as HTMLButtonElement;
 let stopBtn = document.getElementById("stop-btn") as HTMLButtonElement;
 
 let timer = document.getElementById("timer");
@@ -60,6 +60,14 @@ nextBtn.onclick = () => {
         questionIdx += 1;
         question = quiz.questionList[questionIdx];
 
+        if (questionIdx > 0) {
+            prevBtn.disabled = false;
+        }
+        
+        if (questionIdx+1 == quiz.questionList.length) {
+            nextBtn.disabled = true;
+        }
+
         renderQuestion();
     }
 }
@@ -68,6 +76,14 @@ prevBtn.onclick = () => {
     if (questionIdx > 0) {
         questionIdx -= 1
         question = quiz.questionList[questionIdx];
+
+        if (questionIdx == 0) {
+            prevBtn.disabled = true;
+        }
+        
+        if (questionIdx+1 < quiz.questionList.length) {
+            nextBtn.disabled = false;
+        }
 
         renderQuestion();
     }
@@ -128,6 +144,8 @@ const showQuiz = (_quiz: IQuiz) => {
     answeredCount = 0;
 
     stopBtn.disabled = true;
+    prevBtn.disabled = true;
+    nextBtn.disabled = quiz.questionList.length == 1? true : false;
 
     result = {
         score: 0,

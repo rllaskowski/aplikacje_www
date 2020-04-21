@@ -6,6 +6,7 @@ import { getResultList } from '../utils';
 let mainView = document.getElementById("main-view");
 let scoreList = document.getElementById("score-list");
 let quizStartList = document.getElementById("quiz-list");
+let scoresSection = document.getElementById("scores-sec");
 
 // View renders
 
