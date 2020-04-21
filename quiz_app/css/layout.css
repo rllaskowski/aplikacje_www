@@ -49,17 +49,14 @@ li {
     list-style-position: outside;
 }
 
-#score-list {
-    border-top: 30px solid #63BA38;
-    border-right: 30px solid #F4CA39;
-    border-bottom: 30px solid #DC3D3B;
-    border-left: 30px solid #1665C8;
-    
-  
+#scores-sec {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-   
+
+    border-radius: 10px;
+    box-shadow: 0 1px 2px #5e5d5b;
+    background-color: white;
     padding: 20px;
 }
 
@@ -79,6 +76,8 @@ li {
     font-family: 'Noto Sans JP', sans-serif;
     border: 1px solid grey;
     text-align: center;
+    box-shadow: 0 1px 2px #5e5d5b;
+    outline: none;
 }
 
 #timer {
@@ -97,9 +96,12 @@ li {
     flex-wrap: wrap;
 }
 
+button {
+    box-shadow: 0 1px 2px #5e5d5b;
+}
+
 #quiz-list button {
     padding: 40px;
-    box-shadow: 0 1px 2px #5e5d5b;
     text-align: center;
     margin: 10px 10px;
 
@@ -162,10 +164,6 @@ button:focus {
 
 button:enabled {
     background-color:  #834FBA;
-}
-
-button:active {
-    transform: translateY(1px);
 }
 
 button:disabled {
