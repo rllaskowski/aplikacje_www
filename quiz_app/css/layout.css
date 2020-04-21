@@ -90,21 +90,61 @@ li {
 #quiz-list {
     padding: 20px;
     border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
 }
 
 #quiz-list button {
     width: 200px;
     height: 200px;
+
+    margin: 20px;
+
+    flex-basis: auto;
 }
 
-#quiz-list button:nth-child(odd) {
+
+button:enabled:hover {
+    background-color: white !important;
+}
+
+#quiz-list button:nth-child(4n+0) {
     background-color: #F4CA39;
 }
 
-#quiz-list button:hover:nth-child(odd) {
+#quiz-list button:hover:nth-child(4n+0) {
     color: #F4CA39;
-    background-color: white;
 }
+
+#quiz-list button:nth-child(4n+1) {
+    background-color: #63BA38;
+}
+
+#quiz-list button:hover:nth-child(4n+1) {
+    color: #63BA38;
+}
+
+#quiz-list button:nth-child(4n+2) {
+    background-color: #DC3D3B;
+}
+
+#quiz-list button:hover:nth-child(4n+2) {
+    color: #DC3D3B;
+}
+
+#quiz-list button:nth-child(4n+3) {
+    background-color: #1665C8;
+}
+
+#quiz-list button:hover:nth-child(4n+3) {
+    color: #1665C8;
+}
+
+
+
 
 
 #quiz-description {
@@ -136,10 +176,8 @@ button:disabled {
 }
 
 
-
-
 button:hover:enabled {
     color:  #834FBA;
     border-color: currentColor;
-    background-color: white;
+
 }

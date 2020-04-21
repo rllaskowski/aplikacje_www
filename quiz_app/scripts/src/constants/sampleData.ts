@@ -47,8 +47,49 @@ const quiz1: IQuiz = {
     ]
 }
 
+
+const quiz2: IQuiz = {
+    id: 1,
+    name: "Mnożenie",
+    description: "Pamiętaj, że wynik mnożenia to iloczyn!",
+    questionList: [
+        question1,
+        question2,
+        question3,
+        question4,
+    ]
+}
+
+const quiz3: IQuiz = {
+    id: 1,
+    name: "Dodawanie",
+    description: "Pamiętaj, że wynik mnożenia to iloczyn!",
+    questionList: [
+        question1,
+        question2,
+        question3,
+        question4,
+    ]
+}
+
+
+const quiz4: IQuiz = {
+    id: 1,
+    name: "Dzielenie",
+    description: "Pamiętaj, że wynik mnożenia to iloczyn!",
+    questionList: [
+        question1,
+        question2,
+        question3,
+        question4,
+    ]
+}
+
+
+
+
 const quizList: IQuiz[] = [ 
-    quiz1,
+    quiz1, quiz2, quiz3, quiz4
 ]
 
 export {
