@@ -15,9 +15,14 @@ const renderQuizList = () => {
 
     quizList.forEach(quiz => {
         const quizStartBtn = document.createElement("button");
+        const questionNum = document.createElement("div");
         
+        questionNum.innerText = quiz.questionList.length.toString();
+        questionNum.classList.add("question-num");
+
         quizStartBtn.textContent = quiz.name;
-        
+        quizStartBtn.appendChild(questionNum);
+
         quizStartBtn.onclick = () => {
             hideView(mainView).then(() => showQuiz(quiz));
         }

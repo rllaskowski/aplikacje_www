@@ -41,8 +41,6 @@ const quiz1: IQuiz = {
     description: "To jest quiz z podstawowych działań arytmetycznych",
     questionList: [
         question1,
-        question2,
-        question3,
         question4,
     ]
 }
@@ -55,7 +53,6 @@ const quiz2: IQuiz = {
     questionList: [
         question1,
         question2,
-        question3,
         question4,
     ]
 }
@@ -78,7 +75,6 @@ const quiz4: IQuiz = {
     name: "Dzielenie",
     description: "Pamiętaj, że wynik mnożenia to iloczyn!",
     questionList: [
-        question1,
         question2,
         question3,
         question4,
