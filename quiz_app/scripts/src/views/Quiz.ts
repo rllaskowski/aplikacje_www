@@ -34,7 +34,7 @@ let answeredCount: number;
 
 // View renderers
 const renderTimer = () => {
-    timer.innerText = `Czas trwania quizu: ${timeElapsed}s`;
+    timer.innerText = `${timeElapsed}s`;
 }
     
 const renderQuestion = () => {
