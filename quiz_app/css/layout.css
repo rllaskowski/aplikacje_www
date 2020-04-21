@@ -87,20 +87,25 @@ li {
 }
 
 
-#quiz-list li{
-    background-color: #F4CA39;
+#quiz-list {
     padding: 20px;
     border-radius: 20px;
 }
 
-#quiz-list li :nth-child(even){
-    background-color: #F4CA39;
-    padding: 20px;
+#quiz-list button {
+    width: 200px;
+    height: 200px;
 }
 
-#quiz-list li:hover {
-    background-color: #E2B728;
+#quiz-list button:nth-child(odd) {
+    background-color: #F4CA39;
 }
+
+#quiz-list button:hover:nth-child(odd) {
+    color: #F4CA39;
+    background-color: white;
+}
+
 
 #quiz-description {
     margin-bottom: 40px;
@@ -129,6 +134,7 @@ button:active {
 button:disabled {
     background-color: grey;
 }
+
 
 
 

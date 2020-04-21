@@ -14,15 +14,15 @@ const renderQuizList = () => {
     quizStartList.innerHTML = "";
 
     quizList.forEach(quiz => {
-        const quizLi = document.createElement("li");
+        const quizStartBtn = document.createElement("button");
         
-        quizLi.textContent = quiz.name;
-    
-        quizLi.onclick = () => {
+        quizStartBtn.textContent = quiz.name;
+        
+        quizStartBtn.onclick = () => {
             hideView(mainView).then(() => showQuiz(quiz));
         }
 
-        quizStartList.appendChild(quizLi);
+        quizStartList.appendChild(quizStartBtn);
     });
 }
 
