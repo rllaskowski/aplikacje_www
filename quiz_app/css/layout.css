@@ -11,7 +11,6 @@ body {
 
 
 header {
-    margin-top: 0px;
     box-shadow: 0 1px 2px #5e5d5b;
 }
 
@@ -22,7 +21,7 @@ header {
     font-size: 70px;
     color: white;  
     padding: 20px;
-
+    margin-bottom: 0px;
 }
 
 #views {
