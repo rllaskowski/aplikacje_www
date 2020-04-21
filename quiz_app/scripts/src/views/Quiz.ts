@@ -55,6 +55,10 @@ const renderDescription = () => {
     quizDescription.textContent = quiz.description;
 }
 
+const renderProgess = () => {
+    progess.innerText = `${questionIdx+1} / ${quiz.questionList.length}`;
+}
+
 // View events
 nextBtn.onclick = () => {
     if (questionIdx+1 < quiz.questionList.length) {
@@ -70,6 +74,7 @@ nextBtn.onclick = () => {
         }
 
         renderQuestion();
+        renderProgess();
     }
 }
 
@@ -87,6 +92,7 @@ prevBtn.onclick = () => {
         }
 
         renderQuestion();
+        renderProgess();
     }
 }
 
@@ -150,7 +156,8 @@ const showQuiz = (_quiz: IQuiz) => {
         answers: {},
         quizID: quiz.id
     }
-
+    
+    renderProgess();
     renderDescription();
     renderTimer();
 

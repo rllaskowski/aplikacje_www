@@ -104,10 +104,24 @@ li {
     color: white;
     font-weight: 600;
 }
+#progress {
+    width: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 40px;
+}
+#nav-sec {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
 
 #timer:active {
     transform: translate(1px, 1px);
 }
+
+
 
 .question-num {
     background-color: white;
