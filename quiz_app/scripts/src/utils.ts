@@ -44,5 +44,7 @@ const saveResult = (result: IResult) => {
 
 export {
     showView,
-    hideView
+    hideView,
+    getResultList,
+    saveResult
 }

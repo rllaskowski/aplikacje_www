@@ -3,21 +3,26 @@ import IResult from '../models/IResult';
 import IQuestion from '../models/IQuestion';
 import { showView, hideView } from '../utils';
 import { showMain } from './Main';
+import { showResult } from './Result';
 
+// Quiz view components
+let quizView = document.getElementById("quiz-view");
 
-// Game view components
 let nextBtn = document.getElementById("next-btn");
 let prevBtn = document.getElementById("prev-btn");
+let cancelBtn = document.getElementById("cancel-btn");
+let stopBtn = document.getElementById("stop-btn") as HTMLButtonElement;
+
 let timer = document.getElementById("timer");
+
+let quizDescription = document.getElementById("quiz-description");
+
 let qContent = document.getElementById("q-content");
-let quizView = document.getElementById("quiz-view");
 let ansInput = document.getElementById("ans-input") as HTMLInputElement;
-let quitBtn = document.getElementById("quit-btn");
-let endBtn = document.getElementById("end-btn");
 
 let timerHandler: number;
 
-// Game view state
+// Quiz view state
 let quiz: IQuiz;
 let result: IResult;
 let questionIdx: number;
@@ -25,6 +30,7 @@ let timeElapsed: number;
 let answered: {[id: number]: boolean};
 let question: IQuestion;
 let answeredCount: number;
+
 
 // View renderers
 const renderTimer = () => {
@@ -42,6 +48,10 @@ const renderQuestion = () => {
         result.answers[question.id].content.toString() : "";
 
     qContent.innerHTML = question.content;
+}
+
+const renderDescription = () => {
+    quizDescription.textContent = quiz.description;
 }
 
 // View events
@@ -63,14 +73,23 @@ prevBtn.onclick = () => {
     }
 }
 
-quitBtn.onclick = () => {
-    clearInterval(timerHandler);
+stopBtn.onclick = () => {
+    if (answeredCount === quiz.questionList.length) {
+        // Check in case someone was messing with button disabled attr
+        
 
+        clearInterval(timerHandler);
+        hideView(quizView).then(() => showResult(result, quiz));
+    }   
+}
+
+cancelBtn.onclick = () => {
+    clearInterval(timerHandler);
     hideView(quizView).then(() => showMain());
 }
 
 
-ansInput.onblur = () => {
+ansInput.oninput = () => {
     if (ansInput.value === "") {
         if (answered[question.id] === true) {
             answeredCount -= 1;
@@ -84,6 +103,12 @@ ansInput.onblur = () => {
 
         result.answers[question.id].content = parseInt(ansInput.value);
     }
+
+    if (answeredCount === quiz.questionList.length) {
+        stopBtn.disabled = false;
+    } else {
+        stopBtn.disabled = true;
+    }
 }
 
 
@@ -96,12 +121,15 @@ const showQuiz = (_quiz: IQuiz) => {
     question = quiz.questionList[0];
     answeredCount = 0;
 
+    stopBtn.disabled = true;
+
     result = {
         score: 0,
         answers: {},
         quizID: quiz.id
     }
 
+    renderDescription();
     renderTimer();
 
     timerHandler = setInterval(() => {

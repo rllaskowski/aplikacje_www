@@ -1,6 +1,10 @@
 import IQuiz from '../models/IQuiz';
 import IQuestion from '../models/IQuestion';
 
+const question: {[id: number]: IQuestion} = {
+
+}
+
 const question1: IQuestion = {
     id: 1,
     content: "Ile to 2+3",
