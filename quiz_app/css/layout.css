@@ -4,7 +4,7 @@ body {
     text-align: center;
     padding: 0px;
    
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Noto Sans JP', sans-serif;
     background-color:#F2F2F2;
 }
@@ -107,30 +107,33 @@ li {
 }
 
 button {
-    padding: 15px 40px;
-    font-size: 20px;
-    border-radius: 18px;
-    border: 0px;
+    padding: 12px 40px;
+    font-size: 18px;
+    border-radius: 10px;
     color: white;
-    background-color:  #834FBA;
     border: 1px solid transparent;
 }
+
+button:focus {
+    outline: none;
+}
+
+button:enabled {
+    background-color:  #834FBA;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
 button:disabled {
     background-color: grey;
 }
+
 
 
 button:hover:enabled {
     color:  #834FBA;
     border-color: currentColor;
     background-color: white;
-}
-
-button:disabled:hover {
-    background-color: grey;
-}
-
-#start-btn {
-    width: 80%;
-
 }
