@@ -232,7 +232,7 @@ button {
 }
 
 button:hover {
-    transition: 200ms ease-in;
+    transition: background-color 200ms ease-in;
 }
 
 button:focus {
