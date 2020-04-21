@@ -111,6 +111,7 @@ li {
     line-height: 40px;
 }
 #nav-sec {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: baseline;
