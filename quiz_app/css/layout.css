@@ -12,7 +12,7 @@ body {
 
 header {
     margin-top: 0px;
-  
+    box-shadow: 0 1px 2px #5e5d5b;
 }
 
 #header {
@@ -98,11 +98,10 @@ li {
 }
 
 #quiz-list button {
-    width: 170px;
-    height: 170px;
+    padding: 40px;
     box-shadow: 0 1px 2px #5e5d5b;
     text-align: center;
-    margin: 20px;
+    margin: 10px 10px;
 
     flex-basis: auto;
 }
@@ -143,9 +142,6 @@ button:enabled:hover {
 #quiz-list button:hover:nth-child(4n+3) {
     color: #1665C8;
 }
-
-
-
 
 
 #quiz-description {
