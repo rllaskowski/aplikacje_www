@@ -95,6 +95,20 @@ li {
     color: white;
 }
 
+#answer-list li {
+    background-color: #DC3D3B;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px #5e5d5b;
+}
+
+.correct {
+    background-color: #63BA38 !important;
+}
+
+
 #nav-sec {
     margin-bottom: 30px;
     margin-top: 20px;

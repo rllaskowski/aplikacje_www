@@ -32,7 +32,11 @@ const renderAnswers = () => {
         let answerLi = document.createElement("li") as HTMLElement;
         const id = parseInt(questionId);
 
-        answerLi.innerHTML = result.answers[id].content.toString();
+        answerLi.innerText = result.answers[id].content.toString();
+
+        if (result.answers[id].content === questionDict[id].correctAnswer) {
+            answerLi.classList.add("correct");
+        }
 
         answerList.appendChild(answerLi);
     });
