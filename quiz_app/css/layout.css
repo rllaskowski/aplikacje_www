@@ -16,7 +16,7 @@ header {
 
 #header {
     margin-top: 0px;
-    background-color:  #834FBA;;
+    background-color:  #01A8F3;
     font-family: 'Bangers', cursive;
     font-size: 70px;
     color: white;  
@@ -199,6 +199,7 @@ li {
     margin: 10px 10px;
     position: relative;
     flex-basis: auto;
+
 }
 
 
@@ -264,7 +265,7 @@ button:focus {
 }
 
 button:enabled {
-    background-color:  #834FBA;
+    background-color: #01A8F3;
 }
 
 button:disabled {
@@ -277,7 +278,7 @@ button:active {
 
 
 button:hover:enabled {
-    color:  #834FBA;
+    color:  #01A8F3;
     border-color: currentColor;
 
 }

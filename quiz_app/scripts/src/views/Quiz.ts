@@ -23,6 +23,24 @@ let ansInput = document.getElementById("ans-input") as HTMLInputElement;
 
 let timerHandler: number;
 
+
+let progressComp = {
+    val: '',
+    listener: () => {
+        
+        console.log('zmiana!');
+    },
+    set value(_val: string) {
+        this.val = _val;
+        this.listener();
+    },
+    get value() {
+        return this.val;
+    }
+
+
+}
+
 // Quiz view state
 let quiz: IQuiz;
 let result: IResult;
@@ -138,6 +156,8 @@ ansInput.oninput = () => {
 
 
 const showQuiz = (_quiz: IQuiz) => {
+    progressComp.value = 'a';
+
     quiz = _quiz;
 
     questionIdx = 0;
@@ -156,7 +176,7 @@ const showQuiz = (_quiz: IQuiz) => {
         answers: {},
         quizID: quiz.id
     }
-    
+
     renderProgess();
     renderDescription();
     renderTimer();
