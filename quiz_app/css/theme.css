@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(243, 243, 243);
+}
+
+header {
+    background-color: #27A4DD;
+    color: white;
+}
+
+button {
+    color: white;
+}
+
+button:enabled {
+    background-color: #27A4DD;
+}
+
+button:enabled:hover {
+    color: #27A4DD;
+}
+
+button:enabled:hover {
+    background-color: white !important;
+}
+
+button:enabled:hover {
+    border-color: currentColor;
+}
+
+#quiz-list button:nth-child(4n+0) {
+    background-color: #EE8C5D;
+}
+
+#quiz-list button:hover:nth-child(4n+0) {
+    color: #EE8C5D;
+}
+
+#quiz-list button:nth-child(4n+1) {
+    background-color: #FAC174;
+}
+
+#quiz-list button:hover:nth-child(4n+1) {
+    color: #FAC174;
+}
+
+#quiz-list button:nth-child(4n+2) {
+    background-color: #F49CC3;
+}
+
+#quiz-list button:hover:nth-child(4n+2) {
+    color: #F49CC3;
+}
+
+#quiz-list button:nth-child(4n+3) {
+    background-color: #A0CA5C;
+}
+
+#quiz-list button:hover:nth-child(4n+3) {
+    color: #A0CA5C;
+}
+
+.question-num {
+    background-color: white;
+    color: black;
+}
+
+#timer {
+    background-color: #A0CA5C;
+    color: white;
+}
+
+.timer-disabled {
+    background-color: #F1646C !important;
+}
+
+.timer-enabled {
+    background-color: #A0CA5C
+}
+
+#scores-sec li {
+    background-color: #27A4DD;
+    color: white;
+}
+
+#answer-list {
+    color: white;
+}
+
+.correct-answer {
+    background-color:#A0CA5C;
+}
+
+.wrong-answer {
+    background-color: #F1646C;
+}
+
+.penalty {
+    color: red;
+    background-color: white;
+}

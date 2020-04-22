@@ -35,8 +35,9 @@ const renderAnswers = () => {
         answerLi.innerText = result.answers[id].content.toString();
 
         if (result.answers[id].content === questionDict[id].correctAnswer) {
-            answerLi.classList.add("correct");
+            answerLi.classList.add("correct-answer");
         } else {
+            answerLi.classList.add("wrong-answer");
             let penalty = document.createElement("div");
             penalty.classList.add("penalty");
             penalty.innerText = `+${questionDict[id].penalty}`;

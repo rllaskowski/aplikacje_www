@@ -1,0 +1,24 @@
+body {
+    font-size: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#header {
+    font-family: 'Bangers', cursive;
+    font-size: 70px;
+}
+
+
+#ans-input {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#timer {
+    font-weight: 600;
+}
+
+button {
+    font-size: 18px;
+}

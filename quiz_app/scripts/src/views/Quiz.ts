@@ -148,9 +148,9 @@ ansInput.oninput = () => {
     }
 
     if (answeredCount === quiz.questionList.length) {
-        timer.classList.remove("disabled");
+        timer.classList.remove("timer-disabled");
     } else {
-        timer.classList.add("disabled");
+        timer.classList.add("timer-disabled");
     }
 }
 
@@ -169,7 +169,7 @@ const showQuiz = (_quiz: IQuiz) => {
     prevBtn.disabled = true;
     nextBtn.disabled = quiz.questionList.length == 1? true : false;
 
-    timer.classList.add("disabled");
+    timer.classList.add("timer-disabled");
 
     result = {
         score: 0,

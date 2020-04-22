@@ -1,0 +1,19 @@
+button {
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 1px 2px #5e5d5b;
+    border: 1px solid transparent;
+}
+
+button:hover {
+    transition: background-color 200ms ease-in;
+}
+
+button:active {
+    transform: translate(1px, 1px);
+}
+
+button:focus {
+    outline: none;
+}
+
