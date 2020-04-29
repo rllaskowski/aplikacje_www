@@ -2,14 +2,17 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": false,
-        "module": "commonjs",
-        "target": "es6"
+        "types": [],
+        "module": "es2015",
+        "target": "es6",
+        "lib": ["es2015", "dom"]
     },
     "include": [
         "scripts/*.ts",
         "tests/*.ts"
+        
     ],
     "exclude": [
-
+        "node_modules"
     ]
 }
