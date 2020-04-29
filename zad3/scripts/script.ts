@@ -137,7 +137,7 @@ nameInput.onchange = () => {
 }
 
 submitButton.onclick = () => {
-    console.log('ee');
+   
 }
 
 
