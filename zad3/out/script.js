@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let submitButton = document.querySelector("button[type=submit]");
-let flightLengthP = document.querySelector("p[class=flight-length]");
+const submitButton = document.querySelector("button[type=submit]");
+const flightLengthP = document.querySelector("p[class=flight-length]");
 const flightLengthText = (flightLength) => `Oczekiwana długosc czas lotu: ${flightLength}`;
 flightLengthP.innerText = flightLengthText(123);
-let regulationsP = document.createElement("p");
+const regulationsP = document.createElement("p");
 regulationsP.innerText = "Prosimy o zapoznanie sie z regulaminem strony przed dokonaniem rezerwacji lotu";
 // Tworze paragraf nie na koncu body, tylko na koncu main, zeby nie zepsuc ukladu strony
 document.querySelector("main").appendChild(regulationsP);
-let passengerList = document.querySelectorAll(".passengers-list li");
+const passengerList = document.querySelectorAll(".passengers-list li");
 let maxLexId = "";
 passengerList.forEach(passenger => {
     const passengerId = passenger.getAttribute("data-passenger-id");
@@ -35,50 +35,50 @@ const changeColors = (element) => {
         });
     }
 };
-let header = document.querySelector("header");
+const header = document.querySelector("header");
 changeColors(header);
 const showImage = () => {
     fetch("https://api.github.com/repos/Microsoft/TypeScript/commits")
         .then(response => response.json())
         .then(resJson => {
         const imgUrl = resJson[0].committer.avatar_url;
-        let img = document.createElement("img");
+        const img = document.createElement("img");
         img.src = imgUrl;
         img.style.width = "50%";
         document.querySelector("main").appendChild(img);
     });
 };
 showImage();
-let grid = document.querySelector(".main-container");
-const colors = ["aliceblue", "white"];
+const grid = document.querySelector(".main-container");
 let click = 0;
 const delayedList = document.querySelector(".delayed-flights-list");
 const reservationForm = document.querySelector(".reservation-form");
-let body = document.querySelector("body");
-exports.fib = (i) => {
-    if (i <= 2) {
+const body = document.querySelector("body");
+exports.fib = (n) => {
+    if (n <= 2) {
         return 1;
     }
-    return exports.fib(i - 1) + exports.fib(i - 2);
+    return exports.fib(n - 1) + exports.fib(n - 2);
 };
-let i = 1;
+let gridClicked = 1;
+const backgroundColors = ["aliceblue", "red"];
 grid.onclick = (evt) => {
-    console.log(exports.fib(i * 10));
-    i += 1;
+    console.log(exports.fib(gridClicked * 10));
+    gridClicked += 1;
     const target = evt.target;
     if (delayedList.contains(target) || reservationForm.contains(target)) {
-        body.style.backgroundColor = colors[click % 2];
+        body.style.backgroundColor = backgroundColors[click % 2];
         click += 1;
     }
 };
 submitButton.disabled = true;
-let dateInput = document.querySelector("input[type=date]");
-let nameInput = document.querySelector("input[class=name]");
-let form = document.querySelector("form");
+const dateInput = document.querySelector("input[type=date]");
+const nameInput = document.querySelector("input[class=name]");
+const form = document.querySelector("form");
 let goodName = false;
 let goodDate = false;
 dateInput.onchange = () => {
-    let date = new Date(dateInput.value);
+    const date = new Date(dateInput.value);
     if (date >= new Date()) {
         goodDate = true;
     }
@@ -87,15 +87,11 @@ dateInput.onchange = () => {
     }
 };
 nameInput.onchange = () => {
-    console.log(nameInput.value.split(" ").length, "asdas");
     if (nameInput.value.split(" ").length > 1) {
         goodName = true;
     }
     if (goodName && goodDate) {
         submitButton.disabled = false;
     }
-};
-submitButton.onclick = () => {
-    console.log('ee');
 };
 //# sourceMappingURL=script.js.map
