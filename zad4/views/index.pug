@@ -1,0 +1,20 @@
+html
+    head
+        title= title
+    style
+        include ../styles/style.css
+    body
+        h1="Strona główna"
+        h2= message
+        
+        h2="Najlepszy z memów"
+        a(href="meme/"+bestMeme.id)
+            img(src=bestMeme.url class="meme" )
+        p="Aktualna cena: "+bestMeme.priceHistory[0]
+
+        ul
+            each meme in memes
+                li
+                    a(href="meme/"+meme.id)
+                        img(src=meme.url class="meme" )
+                    p="Aktualna cena: "+meme.priceHistory[0]

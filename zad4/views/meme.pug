@@ -1,0 +1,21 @@
+html
+    head
+        title= title
+    style
+        include ../styles/style.css
+    body
+        h1=meme.name
+        img(src=meme.url class="meme")
+
+        h2="Historia cen mema"
+        table
+            tbody
+                each price, index in meme.priceHistory
+                    tr 
+                        td=index+1
+                        td=price
+
+        h2="Wyceń mema"
+        form(method="POST")
+            input(type="number" name="price")
+            input(type="submit")
