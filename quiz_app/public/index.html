@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Quizowanie</title>
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="wclassth=device-wclassth,initial-scale=1.0">
+        
+        <link rel="stylesheet" href="/css/layout.css"/>
+        <link rel="stylesheet" href="/css/theme.css"/>
+        <link rel="stylesheet" href="/css/fonts.css"/>
+        <link rel="stylesheet" href="/css/button.css"/>
+        <link rel="stylesheet" href="/css/views.css"/>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+          <h1 id="header">QUIZOWANIE</h1>
+        </header>
+        
+        <main class="main-container">
+            
+            <div id="views">
+                <div id="main-view" class="invisible-view">
+                   <nav>
+                        <ul>
+                            <li id="account-link">Moje konto</li>
+                            <li id="signout-link">Wyloguj</li>
+                        </ul>
+                    </nav>
+
+                    <div id="quiz-list"></div>
+                    <div id="scores-sec">
+                    </div>
+                </div>
+
+                <div id="quiz-view" class="invisible-view">
+                    <div id="timer" class="loader"></div>
+                    <p id="quiz-description"></p>
+            
+                        <div class="question-sec">
+                            <p id="q-content"></p>
+                            <input type="number"id="ans-input"/>
+                        </div>
+                        
+                        <div id="nav-sec">
+                               <button id="prev-btn"><</button>
+                               
+                                <div id="progress"></div>
+                                <button id="next-btn">></button>
+                        </div>
+                        <div>
+                            <button id="cancel-btn">ANULUJ</button>
+                        </div>
+                </div>     
+
+                <div id="result-view" class="invisible-view">
+                    <p id="score"></p>
+                    <ul id="answer-list"></ul>
+                    <button id="home-btn">Powrót</button>
+                </div>
+                <div id="login-view" class="invisible-view">
+                    <p>Zaloguj się aby rozpocząć Quizowanie!</p>
+                    <div id="login-form"> 
+                        <div>                 
+                            <input id="username-input" type="text" placeholder="login"/>
+                        </div>
+                        <div>
+                            <input id="passw-input" type="password" placeholder="hasło"/>
+                        </div>
+                        <div>
+                            <button id="login-btn">Zaloguj</button>
+                        </div>
+
+                        <p id="status-text"></p>
+                    </div>
+                </div>
+                <div id="account-view" class="invisible-view">
+                    <p>Zmień hasło:</p>
+
+                    <div id="change-passw-form"> 
+                        <div>                 
+                            <input id="passw1-input" type="password" placeholder="Nowe hasło"/>
+                        </div>
+                        <div>
+                            <input id="passw2-input" type="password" placeholder="Powtórz hasło"/>
+                        </div>
+                        <div>
+                            <button id="change-passw-btn">Zmień haslo</button>
+                        </div>
+
+                        <p id="message-text"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="/scripts/app.js"></script>   
+    </body>
+</html>
+

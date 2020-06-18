@@ -10,10 +10,18 @@
     transition: opacity 800ms ease-in-out;
 }
 
+#login-view {
+    transition: opacity 300ms ease-in-out;
+}
+
+#account-view {
+    transition: opacity 300ms ease-in-out;
+}
 
 .invisible-view {
     opacity: 0 !important;
     transition: opacity 300ms ease-in-out, visibility 300ms !important;
     overflow: hidden;
     visibility: hidden;
+    height: 0px;
 }

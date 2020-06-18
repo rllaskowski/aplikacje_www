@@ -1,79 +1,67 @@
-import IQuiz from '../models/IQuiz';
-import IQuestion from '../models/IQuestion';
-
+import IQuiz from '../app/models/IQuiz';
+import IQuestion from '../app/models/IQuestion';
 
 const question1: IQuestion = {
-    id: 1,
     content: "Ile to 2+3?",
-    correctAnswer: 5,
+    answer: 5,
     penalty: 3,
 };
 
 const question2: IQuestion= {
-    id: 2,
     content: "Ile to 3333/3?",
-    correctAnswer: 1111,
+    answer: 1111,
     penalty: 12,
 };
 
 
 const question3: IQuestion=  {
-    id: 3,
     content: "Ile to 38+22?",
-    correctAnswer: 60,
+    answer: 60,
     penalty: 17,
 };
 
 const question4: IQuestion=  {
-    id: 4,
     content: "Ile to 80+3?",
-    correctAnswer: 83,
+    answer: 83,
     penalty: 10,
 };
 
 
 const question5: IQuestion=  {
-    id: 5,
     content: "Ile to 80*3?",
-    correctAnswer: 240,
+    answer: 240,
     penalty: 12,
 };
 
 
-
 const question6: IQuestion=  {
-    id: 6,
     content: "Ile to 16/2?",
-    correctAnswer: 8,
+    answer: 8,
     penalty: 20,
 };
 
 
 const question7: IQuestion=  {
-    id: 7,
     content: "Ile to 16/2?",
-    correctAnswer: 8,
+    answer: 8,
     penalty: 19,
 };
 
 const question8: IQuestion=  {
-    id: 8,
     content: "Ile to 24/3?",
-    correctAnswer: 8,
+    answer: 8,
     penalty: 17,
 };
 
 const question9: IQuestion=  {
-    id: 9,
     content: "Ile to 3*20?",
-    correctAnswer: 60,
+    answer: 60,
     penalty: 13,
 };
 
 const question10: IQuestion=  {
-    id: 10,
     content: "Ile to 16*2?",
-    correctAnswer: 32,
+    answer: 32,
     penalty: 15,
 };
 
@@ -84,14 +72,14 @@ const quiz1: IQuiz = {
     questionList: [
         question1,
         question4,
-        question8,
+        question8, 
         question10,
     ]
 }
 
 
 const quiz2: IQuiz = {
-    id: 1,
+    id: 2,
     name: "Mnożenie",
     description: "Pamiętaj, że wynik mnożenia to iloczyn!",
     questionList: [
@@ -102,7 +90,7 @@ const quiz2: IQuiz = {
 }
 
 const quiz3: IQuiz = {
-    id: 1,
+    id: 3,
     name: "Dodawanie",
     description: "Pamiętaj, że dodawnie jest przemienne!",
     questionList: [
@@ -114,7 +102,7 @@ const quiz3: IQuiz = {
 
 
 const quiz4: IQuiz = {
-    id: 1,
+    id: 4,
     name: "Dzielenie",
     description: "Pamiętaj, że wynik dzielenia to iloraz!",
     questionList: [
@@ -123,9 +111,6 @@ const quiz4: IQuiz = {
         question8,
     ]
 }
-
-
-
 
 const quizList: IQuiz[] = [ 
     quiz1, quiz2, quiz3, quiz4
