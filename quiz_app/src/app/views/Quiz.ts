@@ -8,33 +8,31 @@ import { loginView } from "./Login";
 import { getQuiz, sendSolution, getResult } from "../api";
 import { resultView } from "./Result";
 
-const quizView = async (quizId: number) : Promise<HTMLElement> => {
+const quizView = async (quizId: number): Promise<HTMLElement> => {
     // Quiz view components
-    let view = document.getElementById("quiz-view");
+    const view = document.getElementById("quiz-view");
 
-    let nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
-    let prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
-    let cancelBtn = document.getElementById("cancel-btn") as HTMLButtonElement;
+    const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+    const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
+    const cancelBtn = document.getElementById("cancel-btn") as HTMLButtonElement;
 
-    let timer = document.getElementById("timer");
+    const timer = document.getElementById("timer");
 
-    let quizDescription = document.getElementById("quiz-description");
+    const quizDescription = document.getElementById("quiz-description");
 
-    let progess = document.getElementById("progress");
+    const progess = document.getElementById("progress");
 
-    let qContent = document.getElementById("q-content");
-    let ansInput = document.getElementById("ans-input") as HTMLInputElement;
+    const qContent = document.getElementById("q-content");
+    const ansInput = document.getElementById("ans-input") as HTMLInputElement;
 
     let timerHandler: NodeJS.Timeout;
 
     const result = await getResult(quizId);
-
     if (result && result.score) {
         return resultView(quizId, result);
     }
 
     const quiz = await getQuiz(quizId);
-
     if (!quiz) {
         return loginView("Upłynął czas Twojej sesji. Zaloguj się ponownie");
     }

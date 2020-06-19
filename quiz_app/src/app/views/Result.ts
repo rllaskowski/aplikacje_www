@@ -4,12 +4,13 @@ import { getResult, getQuizAll, getBestScores } from "../api";
 import IQuestion from '../models/IQuestion';
 import { mainView } from './Main';
 
-const resultView = async (quizId: number, _result: IResult = null) : Promise<HTMLElement> => {
+const resultView = async (quizId: number, _result: IResult = null): Promise<HTMLElement> => {
     // Result view components
     const view = document.getElementById("result-view");
     const answerList = document.getElementById("answer-list");
     const scoreP = document.getElementById("score");
     const homeBtn = document.getElementById("home-btn");
+    const scoreList = document.getElementById("score-list");
 
     // Result view state
     const result = _result ?? await getResult(quizId);
@@ -58,12 +59,11 @@ const resultView = async (quizId: number, _result: IResult = null) : Promise<HTM
     homeBtn.onclick = () => {
         showView(mainView());
     }
-
-    /*
+    
     const renderScoreList = () => {
         scoreList.innerHTML = "";
 
-        let resultList = getResultList().sort((a, b) => {
+        let resultList = scores.sort((a, b) => {
             return a.score < b.score? -1 : 1;
         });
 
@@ -78,8 +78,9 @@ const resultView = async (quizId: number, _result: IResult = null) : Promise<HTM
                 scoreList.appendChild(scoreLi);
             });
         }
-    }*/
+    }
 
+    renderScoreList();
     renderScore();
     renderAnswers();
 

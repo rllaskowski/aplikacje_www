@@ -75,8 +75,7 @@ const quiz1: IQuiz = {
         question8, 
         question10,
     ]
-}
-
+};
 
 const quiz2: IQuiz = {
     id: 2,
@@ -87,7 +86,7 @@ const quiz2: IQuiz = {
         question9,
         question10,
     ]
-}
+};
 
 const quiz3: IQuiz = {
     id: 3,
@@ -98,7 +97,7 @@ const quiz3: IQuiz = {
         question3,
         question4,
     ]
-}
+};
 
 
 const quiz4: IQuiz = {
@@ -110,12 +109,28 @@ const quiz4: IQuiz = {
         question7,
         question8,
     ]
-}
+};
 
 const quizList: IQuiz[] = [ 
     quiz1, quiz2, quiz3, quiz4
-]
+];
+
+const userList: {username: string, password: string}[] = [
+    {
+        username: "user1",
+        password: "user1"
+    }, 
+    {
+        username: "user2",
+        password: "user2"
+    },
+    {
+        username: "robert",
+        password: "123"
+    }
+];
 
 export {
-    quizList
+    quizList,
+    userList,
 }

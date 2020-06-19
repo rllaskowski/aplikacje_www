@@ -1,5 +1,5 @@
 import { dbClient } from './src/db/dbClient';
-import { quizList } from './src/constants/sampleData';
+import { quizList, userList } from './src/constants/sampleData';
 import IQuiz from './src/app/models/IQuiz';
 
 const CREATE_QUIZ_TABLE = `
@@ -43,8 +43,11 @@ const CREATE_RESULT_TABLE = `
     );
 `;
 
-const insertUser = (db: dbClient, username: string, password: string) => {
-    return db.run(`INSERT INTO user (username, passw) VALUES (?, ?);`, [username, password]);
+const insertUser = (db: dbClient, user: {username: string, password: string}) => {
+    return db.run(`INSERT INTO user (username, passw) VALUES (?, ?);`, [
+        user.username, 
+        user.password
+    ]);
 }
 
 const insertQuiz = async (db: dbClient, quiz: IQuiz) => {
@@ -74,8 +77,9 @@ const initDB = async () => {
         await db.run(CREATE_QUESTION_TABLE, []);
         await db.run(CREATE_RESULT_TABLE, []);
         
-        await insertUser(db, "user1", "user1");
-        await insertUser(db, "user2", "user2");
+        userList.forEach(user => {
+            insertUser(db, user);
+        });
 
         quizList.forEach((quiz) => {
             insertQuiz(db, quiz);
