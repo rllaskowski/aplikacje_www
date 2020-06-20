@@ -110,6 +110,16 @@ li {
     top: -20px;
 }
 
+.good-answer {
+    position: absolute;
+    width: 90%;
+    margin-left: 4%;
+    line-height: 60px;
+    border-radius: 0px 0px 15px 15px;
+    z-index: -1;
+    bottom: -55px;
+}
+
 #answer-list {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -187,7 +197,7 @@ li {
 
 nav ul {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 
 }
 
@@ -195,4 +205,28 @@ nav ul {
     width: 50%;
     padding: 20px;
     margin: 10px;
+}
+
+.wrong-answer {
+    margin-bottom: 80px !important;
+}
+
+#signout-link {
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+#account-link {
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+#change-passw-btn {
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+#home-btn {
+    margin: 20px;
+    padding: 10px 20px;
 }

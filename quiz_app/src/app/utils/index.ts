@@ -1,6 +1,5 @@
 const TOKEN_KEY = "user_session";
 
-
 const getCookie = (name: string) => {
     const match = document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));
 

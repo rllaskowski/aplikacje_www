@@ -1,8 +1,8 @@
 import { showView } from "./view";
-import IResult from '../models/IResult';
+import IResult from "../models/IResult";
 import { getResult, getQuizAll, getBestScores } from "../api";
-import IQuestion from '../models/IQuestion';
-import { mainView } from './Main';
+import IQuestion from "../models/IQuestion";
+import { mainView } from "./Main";
 
 const resultView = async (quizId: number, _result: IResult = null): Promise<HTMLElement> => {
     // Result view components
@@ -16,8 +16,6 @@ const resultView = async (quizId: number, _result: IResult = null): Promise<HTML
     const result = _result ?? await getResult(quizId);
     const quiz = await getQuizAll(quizId);
     const scores = await getBestScores(quizId);
-
-    console.log(scores);
 
     let questionDict: {[id: number]: IQuestion}
 
@@ -41,10 +39,14 @@ const resultView = async (quizId: number, _result: IResult = null): Promise<HTML
                 answerLi.classList.add("correct-answer");
             } else {
                 answerLi.classList.add("wrong-answer");
-                let penalty = document.createElement("div");
+                const penalty = document.createElement("div");
+                const correctAnswer = document.createElement("div");
                 penalty.classList.add("penalty");
+                correctAnswer.classList.add("good-answer");
                 penalty.innerText = `+${questionDict[id].penalty}`;
-                answerLi.appendChild(penalty)
+                correctAnswer.innerText = questionDict[id].answer.toString();
+                answerLi.appendChild(penalty);
+                answerLi.appendChild(correctAnswer);
             }
 
             answerList.appendChild(answerLi);

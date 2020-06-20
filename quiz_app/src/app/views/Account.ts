@@ -1,9 +1,9 @@
 import { showView } from './view';
 import { mainView } from './Main';
 import { loginView } from './Login';
-import { postRequest, getCookie, removeToken } from '../utils';
+import { postRequest, removeToken } from '../utils';
 
-const accountView = async () => {
+const accountView = async (): Promise<HTMLElement> => {
     // View components
     const view = document.getElementById("account-view");
     const submitBtn = document.getElementById("change-passw-btn") as HTMLButtonElement;
@@ -13,23 +13,18 @@ const accountView = async () => {
 
     messageText.textContent = "";
 
-    submitBtn.onclick = (evt) => {
+    submitBtn.onclick = () => {
         if (!passw1Input.value || !passw2Input.value) {
             messageText.textContent = "Musisz wypełnić oba pola!";
-
             return;
         }
 
         if (passw1Input.value !== passw2Input.value) {
             messageText.textContent = "Podane hasła nie są takie same!";
-            
             return;
         }
 
-        const token = getCookie("user_session");
-        const data = `token=${token}&password=${passw1Input.value}`;
-
-        postRequest("/api/password-change", data)
+        postRequest("/api/password-change", `password=${passw1Input.value}`)
             .then(res => {
                 if (res.status === 200) {
                     removeToken();
