@@ -1,6 +1,8 @@
-let currentView: HTMLElement = null; 
+type View = HTMLElement
 
-const hideView = (view: HTMLElement) => {
+let currentView: View = null; 
+
+const hideView = (view: View) => {
     return new Promise(resolve => {
         view.classList.add("invisible-view");
         
@@ -13,7 +15,7 @@ const hideView = (view: HTMLElement) => {
     });
 }
 
-const showView = async (viewProm: Promise<HTMLElement>) => {
+const showView = async (viewProm: Promise<View>) => {
     if (currentView) {
         await hideView(currentView);
     }
@@ -33,7 +35,8 @@ const showView = async (viewProm: Promise<HTMLElement>) => {
 }
 
 export {
-    showView
+    showView,
+    View
 }
 
 

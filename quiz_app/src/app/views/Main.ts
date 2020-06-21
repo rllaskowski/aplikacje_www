@@ -1,11 +1,11 @@
-import { showView } from "./view";
+import { showView, View } from "./view";
 import { quizView } from "./Quiz";
 import { removeToken } from "../utils";
 import { getQuizList } from "../api";
 import { accountView } from "./Account";
 import { loginView } from "./Login";
 
-const mainView = async (): Promise<HTMLElement> => {
+const mainView = async (): Promise<View> => {
     // View components
     const view = document.getElementById("main-view");
 

@@ -130,7 +130,14 @@ li {
 
 #answer-list li {
     position: relative;
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question-result {
+    position: relative;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 1px 2px #5e5d5b;
@@ -198,17 +205,12 @@ li {
 nav ul {
     display: flex;
     justify-content: center;
-
 }
 
 #change-passw-form input {
     width: 50%;
     padding: 20px;
     margin: 10px;
-}
-
-.wrong-answer {
-    margin-bottom: 80px !important;
 }
 
 #signout-link {
@@ -228,5 +230,14 @@ nav ul {
 
 #home-btn {
     margin: 20px;
+    padding: 10px 20px;
+}
+
+.wrong-answer {
+    margin-bottom: 80px;
+}
+
+#home-link {
+    margin-top: 20px;
     padding: 10px 20px;
 }

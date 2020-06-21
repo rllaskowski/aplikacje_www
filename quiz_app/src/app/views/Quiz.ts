@@ -1,14 +1,14 @@
 import IQuiz from "../models/IQuiz";
 import ISolution from "../models/ISolution";
 import IQuestion from "../models/IQuestion";
-import { showView } from "./view";
+import { showView, View } from "./view";
 import { mainView } from "./Main";
 
 import { loginView } from "./Login";
 import { getQuiz, sendSolution, getResult } from "../api";
 import { resultView } from "./Result";
 
-const quizView = async (quizId: number): Promise<HTMLElement> => {
+const quizView = async (quizId: number): Promise<View> => {
     // Quiz view components
     const view = document.getElementById("quiz-view");
 
@@ -47,7 +47,7 @@ const quizView = async (quizId: number): Promise<HTMLElement> => {
 
     // View renderers
     const renderTimer = () => {
-        timer.innerText = `${time}`;
+        timer.innerText = `${Math.floor(time)}`;
     }
         
     const renderQuestion = () => {
@@ -113,7 +113,7 @@ const quizView = async (quizId: number): Promise<HTMLElement> => {
             clearInterval(timerHandler);
             
             for (const ans of Object.values(solution.answers)) {
-                ans.time = Math.floor(ans.time*100/time);
+                ans.time = ans.time*100.0/time;
             }
 
             sendSolution(solution)
@@ -178,9 +178,9 @@ const quizView = async (quizId: number): Promise<HTMLElement> => {
     timerHandler = setInterval(() => {
         renderTimer();
 
-        time += 1;
-        solution.answers[question.id].time += 1;
-    }, 1000);
+        time += 0.1;
+        solution.answers[question.id].time += 0.1;
+    }, 100);
 
     renderQuestion();
 

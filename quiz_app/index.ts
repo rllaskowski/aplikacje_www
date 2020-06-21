@@ -1,17 +1,24 @@
 require("dotenv").config();
 
-const express = require('express');
-const app = express();
+const bcrypt = require("bcrypt");
+const express = require("express");
+
 const path = require('path');
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 
-import { dbClient } from './src/db/dbClient';
+import { dbClient } from "./src/db/dbClient";
 
-import IQuestion from './src/app/models/IQuestion';
-import ISolution from './src/app/models/ISolution';
-import IQuiz from './src/app/models/IQuiz';
+import IQuestion from "./src/app/models/IQuestion";
+import ISolution from "./src/app/models/ISolution";
+import IQuiz from "./src/app/models/IQuiz";
+
+const secret = process.env.TOKEN_SECRET;
+
+const db = new dbClient("quiz.db");
+
+const app = express();
 
 const publicPath = path.join(__dirname, 'public');
 app.use(express.static(publicPath));
@@ -22,29 +29,27 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const secret = process.env.TOKEN_SECRET;
-const db = new dbClient('quiz.db');
-
 const auth = () => {
-    return (req, res, next) => {
+    return async (req, res, next) => {
         const token = req.body.token;
 
         if (token) {
             try {
                 const user = jwt.verify(token, secret);
-                req.user = user;
-
-                const options = {
-                    maxAge: 1000*60*15,
-                    httpOnly: false,
-                    signed: false
+               
+                const userData = await db.all("SELECT id, username, passw FROM user WHERE id=?;", [
+                    user.id
+                ]);
+        
+                if (!userData[0]) {
+                    return next();
                 }
-    
-                const newToken = jwt.sign({id: user.id}, secret, { 
-                    expiresIn: 60*15
-                });
-    
-                res.cookie('user_session', newToken, options);
+
+                if (userData[0].passw !== user.password) {
+                    return next();
+                }
+
+                req.user = user;
             } catch (err) {
                 console.log(err);
             }
@@ -69,7 +74,9 @@ app.post("/api/quiz/", async (req, res) => {
     const now = new Date();
 
     try {
-        const data = await db.all("SELECT id, content FROM question WHERE quiz_id=?;", [
+        const data = await db.all(`SELECT id, content
+                                    FROM question
+                                    WHERE quiz_id=?;`, [
             quizId
         ]);
         const questionList = data as IQuestion[]; 
@@ -87,7 +94,7 @@ app.post("/api/quiz/", async (req, res) => {
         return res.status(500).send();
     }
 
-    db.run("INSERT OR REPLACE INTO result(user_id, quiz_id, start_time) VALUES(?, ?, ?)", [
+    db.run(`INSERT OR REPLACE INTO result(user_id, quiz_id, start_time) VALUES(?, ?, ?)`, [
         req.user.id,
         quizId,
         now
@@ -110,7 +117,9 @@ app.post("/api/quiz-all", (req, res) => {
         return res.status(404).send();
     }
 
-    db.all("SELECT id, content, penalty, answer FROM question WHERE quiz_id=?;", [
+    db.all(`SELECT id, content, penalty, answer, total_time AS totalTime, correct_num AS correctNum
+            FROM question
+            WHERE quiz_id=?;`, [
         quizId
     ]).then(data => {
         const questionList = data as IQuestion[]; 
@@ -147,7 +156,7 @@ app.post("/api/quiz-list", (req, res) => {
         });
 });
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login", async (req, res) => {
     if (req.user) {
         return res.status(200).send();
     }
@@ -156,34 +165,41 @@ app.post("/api/login", (req, res) => {
     const password = req.body.password;
     
     if (!username || !password) {
-        return res.status(401);
+        return res.status(401).send();
     }
 
-    db.all("SELECT id, username, passw FROM user WHERE username=?;", [username])
-        .then(data => {
-            const user: {id, username, passw} = data[0];
+    try {
+        const data = await db.all("SELECT id, username, passw FROM user WHERE username=?;", [
+            username
+        ]);
+        const user: {id, username, passw} = data[0];
+            
+        if (user) {
+            const goodPassw = await bcrypt.compare(password, user.passw);
 
-            if (user && user.passw === password) {
-                const options = {
-                    maxAge: 1000*60*15,
-                    httpOnly: false,
-                    signed: false
-                }
-
-                const token = jwt.sign({ id: user.id }, secret, { 
-                    expiresIn: 60*15
-                });
-
-                return res.cookie('user_session', token, options).send();
-            } else {
-                res.status(401).send();
+            if (!goodPassw) {
+                return res.status(401).send();
             }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).send();
-        })
 
+            const options = {
+                maxAge: 1000*60*15,
+                httpOnly: false,
+                signed: false
+            }
+
+            const token = jwt.sign({ id: user.id, password: user.passw }, secret, { 
+                expiresIn: 60*15
+            });
+
+            return res.cookie('user_session', token, options).send();
+        } else {
+            res.status(401).send();
+        }
+    } catch (err) {
+        console.log(err);
+
+        return res.status(500).send();
+    } 
 });
 
 
@@ -193,15 +209,20 @@ app.post("/api/password-change", (req, res) => {
     }
 
     const password = req.body.password;
-
     if (!password) {
         return res.status(401).send();
     }
 
-    db.run("UPDATE user SET passw=? WHERE id=?;", [password, req.user.id])
-        .then(() => {
+    bcrypt.hash(password, 10, (err, hash) => {
+        db.run("UPDATE user SET passw=? WHERE id=?;", [
+            hash, req.user.id
+        ]).then(() => {
             res.status(200).send();
+        }).catch(err => {
+            console.log(err);
+            res.status(500).send();
         });
+    });
 });
 
 app.post("/api/send-solution", async (req, res) => {
@@ -222,7 +243,9 @@ app.post("/api/send-solution", async (req, res) => {
     const now = new Date().getTime();
 
     try {
-        const data = await db.all("SELECT start_time FROM result WHERE quiz_id=? AND user_id=?" , [
+        const data = await db.all(`SELECT start_time
+                                    FROM result
+                                    WHERE quiz_id=? AND user_id=?` , [
             solution.quizId,
             req.user.id
         ]);
@@ -240,7 +263,9 @@ app.post("/api/send-solution", async (req, res) => {
     let questionList: IQuestion[];
 
     try {
-        const data = await db.all("SELECT id, answer, penalty FROM question WHERE quiz_id=?" , [
+        const data = await db.all(`SELECT id, answer, penalty 
+                                    FROM question
+                                    WHERE quiz_id=?` , [
             solution.quizId,
         ]);
         questionList = data as IQuestion[];
@@ -256,16 +281,28 @@ app.post("/api/send-solution", async (req, res) => {
 
     questionList.forEach(question => {
         questionDict[question.id] = question;
-    })
+    });
 
     Object.keys(solution.answers).forEach(key => {
         answers[key] = solution.answers[key].content;
-        if (answers[key] !== questionDict[key].content) {
+        if (answers[key] !== questionDict[key].answer) {
             score += questionDict[key].penalty;
+        } else {
+            const timeSpend = solution.answers[key].time*duration/100;
+
+            db.run(`
+                UPDATE question 
+                SET total_time=total_time+?, correct_num=correct_num+1 
+                WHERE id=?;`, [
+                    timeSpend,
+                    key
+                ]);
         }
     });
 
-    db.run("UPDATE result SET score=?, answers_json=? WHERE quiz_id=? AND user_id=?;", [
+    db.run(`UPDATE result
+            SET score=?, answers_json=? 
+            WHERE quiz_id=? AND user_id=?;`, [
         score,
         JSON.stringify(answers),
         solution.quizId,
@@ -287,7 +324,9 @@ app.post("/api/best-scores", (req, res) => {
         return res.status.send(404);
     }
 
-    db.all("SELECT score FROM result WHERE quiz_id=?", [
+    db.all(`SELECT score
+            FROM result 
+            WHERE quiz_id=?`, [
         quizId
     ]).then(data => {
         res.send(data);
@@ -304,7 +343,9 @@ app.post("/api/get-result", (req, res) => {
         return res.status(404).send();
     }
 
-    db.all("SELECT score, answers_json, start_time FROM result WHERE user_id=? AND quiz_id=?", [
+    db.all(`SELECT score, answers_json, start_time
+            FROM result
+            WHERE user_id=? AND quiz_id=?`, [
         req.user.id,
         quizId
     ]).then(data => {

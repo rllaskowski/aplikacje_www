@@ -1,10 +1,10 @@
-import { showView } from "./view";
+import { showView, View } from "./view";
 import IResult from "../models/IResult";
 import { getResult, getQuizAll, getBestScores } from "../api";
 import IQuestion from "../models/IQuestion";
 import { mainView } from "./Main";
 
-const resultView = async (quizId: number, _result: IResult = null): Promise<HTMLElement> => {
+const resultView = async (quizId: number, _result: IResult = null): Promise<View> => {
     // Result view components
     const view = document.getElementById("result-view");
     const answerList = document.getElementById("answer-list");
@@ -25,31 +25,44 @@ const resultView = async (quizId: number, _result: IResult = null): Promise<HTML
         questionDict[question.id] = question;
     });
 
+    console.log(questionDict);
+
     // View renderers
     const renderAnswers = () => {
         answerList.innerHTML = "";
 
         Object.keys(result.answers).forEach((questionId) => {
-            let answerLi = document.createElement("li") as HTMLElement;
             const id = parseInt(questionId);
-
-            answerLi.innerText = result.answers[id].toString();
+            
+            const questionLi = document.createElement("li") as HTMLElement;
+            const answerDiv = document.createElement("div") as HTMLElement;
+            questionLi.innerHTML = `<p>${questionDict[id].content}</p>`;
+            
+            answerDiv.innerText = `${result.answers[id]}`;
+            answerDiv.classList.add("question-result");
 
             if (result.answers[id] === questionDict[id].answer) {
-                answerLi.classList.add("correct-answer");
+                answerDiv.classList.add("correct-answer");
             } else {
-                answerLi.classList.add("wrong-answer");
+                answerDiv.classList.add("wrong-answer");
                 const penalty = document.createElement("div");
                 const correctAnswer = document.createElement("div");
                 penalty.classList.add("penalty");
                 correctAnswer.classList.add("good-answer");
                 penalty.innerText = `+${questionDict[id].penalty}`;
-                correctAnswer.innerText = questionDict[id].answer.toString();
-                answerLi.appendChild(penalty);
-                answerLi.appendChild(correctAnswer);
+                correctAnswer.innerText = `${questionDict[id].answer}`;
+                answerDiv.appendChild(penalty);
+                answerDiv.appendChild(correctAnswer);
             }
+            questionLi.appendChild(answerDiv);
 
-            answerList.appendChild(answerLi);
+            if (questionDict[id].correctNum === 0) {    
+                questionLi.innerHTML += `<p>Średni czas na poprawną odpowiedź: ---</p>`;
+            } else {
+                const avgTime = Math.floor(questionDict[id].totalTime/questionDict[id].correctNum*10)/10.0;
+                questionLi.innerHTML += `<p>Średni czas na poprawną odpowiedź: ${avgTime}sek.</p>`;
+            }
+            answerList.appendChild(questionLi);
         });
     }
 
@@ -65,15 +78,15 @@ const resultView = async (quizId: number, _result: IResult = null): Promise<HTML
     const renderScoreList = () => {
         scoreList.innerHTML = "";
 
-        let resultList = scores.sort((a, b) => {
+        const resultList = scores.sort((a, b) => {
             return a.score < b.score? -1 : 1;
         });
 
         if (resultList.length > 0) {
-            let bestResults = resultList.slice(0, 5);
+            const bestResults = resultList.slice(0, 5);
 
             bestResults.forEach(result => {
-                let scoreLi = document.createElement("li") as HTMLElement;
+                const scoreLi = document.createElement("li") as HTMLElement;
 
                 scoreLi.innerHTML = `${result.score} sek.`;
 

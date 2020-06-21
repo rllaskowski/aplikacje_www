@@ -1,8 +1,8 @@
-import { showView } from './view';
+import { showView, View } from './view';
 import { mainView } from './Main';
 import { postRequest } from '../utils';
 
-const loginView = async (status: string = ""): Promise<HTMLElement> => {
+const loginView = async (status: string = ""): Promise<View> => {
     // View components
     const view = document.getElementById("login-view");
     const loginBtn = document.getElementById("login-btn") as HTMLButtonElement;

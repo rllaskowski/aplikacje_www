@@ -88,10 +88,12 @@ button:enabled:hover {
 
 .correct-answer {
     background-color:#A0CA5C;
+    color: white !important;
 }
 
 .wrong-answer {
     background-color: #F1646C;
+    color: white !important;
 }
 
 .penalty {
@@ -99,6 +101,9 @@ button:enabled:hover {
     background-color: white;
 }
 
+#answer-list li {
+    color: black;
+}
 
 input[type="text"], input[type="password"],  input[type="number"] {
     border-radius: 20px;
@@ -111,5 +116,5 @@ input[type="text"], input[type="password"],  input[type="number"] {
 
 .good-answer {
     background-color: #A0CA5C;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }

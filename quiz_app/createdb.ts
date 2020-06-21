@@ -1,6 +1,7 @@
 import { dbClient } from './src/db/dbClient';
 import { quizList, userList } from './src/constants/sampleData';
 import IQuiz from './src/app/models/IQuiz';
+import * as bcrypt from "bcrypt";
 
 const CREATE_QUIZ_TABLE = `
     CREATE TABLE quiz(
@@ -26,7 +27,9 @@ const CREATE_QUESTION_TABLE = `
         content VARCHAR NOT NULL,
         answer INT NOT NULL,
         penalty INT NOT NULL,
-        FOREIGN KEY(quiz_id) REFERENCES quiz(id)       
+        total_time NUMERIC DEFAULT 0,
+        correct_num INT DEFAULT 0,
+        FOREIGN KEY(quiz_id) REFERENCES quiz(id)   
     );
 `;
 
@@ -43,10 +46,12 @@ const CREATE_RESULT_TABLE = `
     );
 `;
 
-const insertUser = (db: dbClient, user: {username: string, password: string}) => {
+const insertUser = async (db: dbClient, user: {username: string, password: string}) => {
+    const hash = await bcrypt.hash(user.password, 10);
+
     return db.run(`INSERT INTO user (username, passw) VALUES (?, ?);`, [
         user.username, 
-        user.password
+        hash
     ]);
 }
 
@@ -77,13 +82,13 @@ const initDB = async () => {
         await db.run(CREATE_QUESTION_TABLE, []);
         await db.run(CREATE_RESULT_TABLE, []);
         
-        userList.forEach(user => {
-            insertUser(db, user);
-        });
-
-        quizList.forEach((quiz) => {
-            insertQuiz(db, quiz);
-        })
+        for (const user of userList) {
+            await insertUser(db, user);
+        }
+        
+        for (const quiz of quizList) {
+            await insertQuiz(db, quiz);
+        }
         
     } catch (err) {
         console.log(err);
