@@ -1,0 +1,23 @@
+html
+    head
+        title= title
+    style
+        include ../styles/style.css
+    body
+
+        h1="Strona główna"
+        h2= message
+        
+        if logined
+            p="Wyswietlone strony w czasie sesji: "+visited
+            a(href="/logout")
+                |wyloguj
+        else
+            a(href="/login")
+                |zaloguj
+        ul
+            each meme in memes
+                li
+                    a(href="meme/"+meme.id)
+                        img(src=meme.url class="meme" )
+                    p="Aktualna cena: "+meme.score

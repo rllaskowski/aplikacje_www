@@ -1,0 +1,40 @@
+{
+  "name": "zad4",
+  "version": "1.0.0",
+  "description": "Zadanie domowe 4",
+  "main": "index.js",
+  "scripts": {
+    "watch": "npm-watch",
+    "start": "npx ts-node index.ts",
+    "createdb": "npx ts-node createdb.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.6",
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "csrf": "^3.1.0",
+    "csurf": "^1.11.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "npm-watch": "^0.6.0",
+    "pug": "^3.0.0",
+    "sqlite3": "^4.2.0",
+    "typescript": "^3.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.5",
+    "@types/sqlite3": "^3.1.6",
+    "mocha": "^7.2.0"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "."
+      ],
+      "extensions": "ts"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+html
+    head
+        title= title
+    style
+        include ../styles/style.css
+    body
+        h1="Memowy bazar"
+
+        form(action="/login" method="POST")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            div
+                input(type="text" name="username")
+            div
+                input(type="password" name="password")
+            div
+                input(type="submit" value="zaloguj się")
+    

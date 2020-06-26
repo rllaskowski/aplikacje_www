@@ -1,0 +1,28 @@
+html
+    head
+        title= title
+    style
+        include ../styles/style.css
+    body
+        if logined
+            p="Wyswietlone strony w czasie sesji: "+visited
+
+        a(href="/")
+            |powrót na stronę główną
+
+        h1=meme.name
+        img(src=meme.url class="meme")
+
+        h2="Historia cen mema"
+        table
+            tbody
+                each score, index in history
+                    tr 
+                        td=index+1
+                        td=score
+        if logined
+            h2="Wyceń mema"
+            form(method="POST")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="number" name="price")
+                input(type="submit")
